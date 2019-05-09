@@ -24,8 +24,8 @@ class TouitContainer extends React.Component {
     /**
      * Constructeur, n'est appelé qu'une fois au tout début
      */
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             touits_datas: [],
         };

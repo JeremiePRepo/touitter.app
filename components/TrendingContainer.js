@@ -58,7 +58,7 @@ class TrendingContainer extends React.Component {
             }
             formatResponse.sort(this.sortTrending);
             this.setState({
-                trending_datas: formatResponse,
+                trending_datas: formatResponse.slice(0, 10),
             });
         })
     }

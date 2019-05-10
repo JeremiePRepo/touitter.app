@@ -23,7 +23,7 @@ class SendMessageForm extends React.Component {
         super(props);
         this.state = {
             name: 'Nom',
-            message: 'Nouveau message',
+            message: 'Votre message',
         };
     }
 
@@ -52,14 +52,17 @@ class SendMessageForm extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Name :</Text>
+                <Text
+                    style={styles.formMainText}
+                >Entrer un nouveau message</Text>
                 <TextInput
+                    style={styles.inputName}
                     value={this.state.name}
                     onChangeText={(name) => this.setState({ name })}
 
                 />
-                <Text>Message :</Text>
                 <TextInput
+                    style={styles.inputMessage}
                     value={this.state.message}
                     onChangeText={(message) => this.setState({ message })}
                 />
@@ -67,7 +70,9 @@ class SendMessageForm extends React.Component {
                     style={styles.button}
                     onPress={this.sendMessage}
                 >
-                    <Text> Valider </Text>
+                    <Text
+                        style={styles.buttonText}
+                    > Valider </Text>
                 </TouchableHighlight>
             </View>
         );
@@ -89,7 +94,45 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     button: {
-        backgroundColor: '#DDDDDD',
-        padding: 10
+        backgroundColor: '#AF7AC5',
+        padding: 10,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        borderRadius: 25,
+    },
+    buttonText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white',
+    },
+    formMainText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    inputName: {
+        borderWidth: 1,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        padding: 10,
+        paddingLeft: 18,
+        borderRadius: 25,
+        backgroundColor: '#FDFEFE',
+        borderColor: '#FDFEFE',
+        color: '#7B7D7D',
+    },
+    inputMessage: {
+        borderWidth: 1,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        padding: 10,
+        paddingLeft: 18,
+        borderRadius: 25,
+        backgroundColor: '#FDFEFE',
+        borderColor: '#FDFEFE',
+        color: '#7B7D7D',
     },
 })

@@ -13,7 +13,7 @@ Imports
 import React from 'react';
 import Touit from './Touit';
 import TouitApi from '../api/TouitApi';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableHighlight, Text } from 'react-native';
 
 /*\
 Class
@@ -28,6 +28,8 @@ class TouitContainer extends React.Component {
         super();
         this.state = {
             touits_datas: [],
+            start: 0,
+            end: 10,
         };
         this.last_timestamp = 0;
     }
@@ -38,7 +40,7 @@ class TouitContainer extends React.Component {
      */
     componentDidMount() {
         this.updateTouitContainer();
-        // setInterval(this.updateTouitContainer, 5000);
+        setInterval(this.updateTouitContainer, 5000);
     }
 
     updateTouitContainer = () => {
@@ -51,12 +53,18 @@ class TouitContainer extends React.Component {
         })
     }
 
+    loadMore = () => {
+        this.setState({
+            end: this.state.end + 10,
+        })
+    }
+
     render() {
-        const { touits_datas } = this.state;
+        const { touits_datas, start, end } = this.state;
         return (
             <View style={styles.container}>
                 <FlatList inverted
-                    data={touits_datas}
+                    data={touits_datas.slice().reverse().slice(start, start + end)}
                     keyExtractor={
                         (item, index) => index.toString()
                     }
@@ -65,6 +73,12 @@ class TouitContainer extends React.Component {
                         // {...item} revient à faire titre={item.titre} description={item.description}
                     }
                 />
+                <TouchableHighlight
+                    style={styles.button}
+                    onPress={this.loadMore}
+                >
+                    <Text style={styles.buttonText}> Voir plus </Text>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -82,5 +96,10 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
+    },
+    button: {
+    },
+    buttonText: {
+        color: "red",
     },
 })

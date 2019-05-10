@@ -21,7 +21,7 @@ class Header extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Touitter App</Text>
+                <Text style={styles.containerText}>Touitter App</Text>
             </View>
         );
     }
@@ -39,5 +39,11 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
+        marginTop: 60,
+    },
+    containerText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 })

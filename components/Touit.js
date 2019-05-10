@@ -41,6 +41,12 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
-        marginTop: 30,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        padding: 10,
+        paddingLeft: 18,
+        borderRadius: 5,
+        backgroundColor: '#C6FF00',
     },
 })

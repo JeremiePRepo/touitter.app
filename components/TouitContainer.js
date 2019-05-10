@@ -53,7 +53,6 @@ class TouitContainer extends React.Component {
 
     render() {
         const { touits_datas } = this.state;
-        // console.log({ touits_datas });
         return (
             <View style={styles.container}>
                 <FlatList inverted

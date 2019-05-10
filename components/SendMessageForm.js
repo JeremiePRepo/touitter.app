@@ -30,14 +30,7 @@ class SendMessageForm extends React.Component {
     /**
      * Envoie des données pour le traitement
      */
-    sendMessage = (e) => {
-        // const name = document.getElementById("name");
-        // const message = document.getElementById("message");
-
-        // e.preventDefault();
-
-        console.log(this.state);
-
+    sendMessage = () => {
         this.TouitApi = new TouitApi();
         this.TouitApi.httpSendMessage(
             this.state.name,

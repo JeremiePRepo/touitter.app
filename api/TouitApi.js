@@ -16,6 +16,7 @@ import {
     API_PORT,
     API_SEND_PATH,
     API_LIST_PATH,
+    API_TREND_PATH,
 } from './apiParams';
 
 /*\
@@ -30,6 +31,20 @@ class TouitApi {
     httpGetMessages(timestamp, callback) {
         const request = new XMLHttpRequest();
         request.open('GET', API_PROTOCOL + API_DOMAIN + API_PORT + API_LIST_PATH + '?ts=' + encodeURIComponent(timestamp), true);
+        request.addEventListener('readystatechange', function () {
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                callback(JSON.parse(request.responseText));
+            }
+        });
+        request.send();
+    }
+
+    /**
+     * Récupération des trending words
+     */
+    httpGetTrending(callback) {
+        const request = new XMLHttpRequest();
+        request.open('GET', API_PROTOCOL + API_DOMAIN + API_PORT + API_TREND_PATH, true);
         request.addEventListener('readystatechange', function () {
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
                 callback(JSON.parse(request.responseText));

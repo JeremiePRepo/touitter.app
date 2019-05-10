@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import TrendingContainer from './components/TrendingContainer';
 import { StyleSheet, ScrollView } from 'react-native';
 import TouitContainer from './components/TouitContainer';
 import SendMessageForm from './components/SendMessageForm';
@@ -9,6 +10,7 @@ export default class App extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Header />
+        <TrendingContainer />
         <SendMessageForm />
         <TouitContainer />
       </ScrollView>

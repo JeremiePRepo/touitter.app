@@ -1,8 +1,8 @@
 /*\
 ------------------------------------------------------------------------------
-Touit.js
+Trending.js
 ------------------------------------------------------------------------------
-Ce component représente un touit
+Affiche un de mots du trending
 ------------------------------------------------------------------------------
 \*/
 
@@ -17,13 +17,12 @@ import { StyleSheet, Text, View } from 'react-native';
 Class
 ------------------------------------------------------------------------------
 \*/
-class Touit extends React.Component {
+class Trending extends React.Component {
     render() {
-        const { name, message } = this.props;
+        const { word, nb } = this.props;
         return (
             <View style={styles.container}>
-                <Text>{name}</Text>
-                <Text>{message}</Text>
+                <Text>{word} ({nb})</Text>
             </View>
         );
     }
@@ -33,7 +32,7 @@ class Touit extends React.Component {
 Export
 ------------------------------------------------------------------------------
 \*/
-export default Touit;
+export default Trending;
 
 /*\
 Styles
@@ -41,6 +40,5 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
-        marginTop: 30,
     },
 })

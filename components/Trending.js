@@ -40,5 +40,14 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'row',
+        borderRadius: 23,
+        borderWidth: 2,
+        height: 46,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: 16,
+        paddingRight: 16,
+        margin: 5,
     },
 })

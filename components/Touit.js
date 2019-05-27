@@ -12,12 +12,27 @@ Imports
 \*/
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import PropTypes from "prop-types";
 
 /*\
 Class
 ------------------------------------------------------------------------------
 \*/
 class Touit extends React.Component {
+
+    /**
+     * Typage des Props
+     */
+    static propTypes = {
+        message : PropTypes.string.isRequired,
+        name : PropTypes.string.isRequired,
+    }
+
+    /**
+     * Rendu du component
+     *
+     * @returns {*}
+     */
     render() {
         const { name, message } = this.props;
         return (

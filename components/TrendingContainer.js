@@ -77,15 +77,14 @@ class TrendingContainer extends React.Component {
         const { trending_datas } = this.state;
         return (
             <View style={styles.container}>
-                <FlatList
-                    data={trending_datas}
-                    keyExtractor={
-                        (item, index) => index.toString()
-                    }
-                    renderItem={
-                        ({ item }) => <Trending word={item.word} nb={item.nb} />
-                    }
-                />
+                {
+                    trending_datas.map((item, index) => {
+                        return(
+                            <Trending key={index} word={item.word} nb={item.nb} style={styles.trending}/>
+                        )
+                    })
+                }
+
             </View>
         );
     }
@@ -103,5 +102,12 @@ Styles
 \*/
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        padding: 20
     },
+    trending:{
+
+    }
 })

@@ -28,8 +28,7 @@ class TouitContainer extends React.Component {
         super(props);
         this.state = {
             touits_datas: [],
-            start: 0,
-            end: 10,
+            offset: 0,
         };
         this.last_timestamp = 0;
     }
@@ -53,18 +52,40 @@ class TouitContainer extends React.Component {
         })
     };
 
-    loadMore = () => {
+    /**
+     * Changer l'offset de la pagination
+     */
+    pagination = (offset=10) => {
         this.setState({
-            end: this.state.end + 10,
+            offset: this.state.offset + offset,
+            // end: this.state.end + changePage,
         })
     };
 
     render() {
-        const {touits_datas, start, end} = this.state;
+
+        // Variables
+        const {touits_datas, offset} = this.state;
+        const INTERVAL=10;
+        let buttonLess;
+
+        // Affichage conditionnel
+        if (this.state.offset > 0) {
+            buttonLess =
+                <TouchableHighlight
+                    style={styles.button}
+                    onPress={() => this.pagination(-10)}
+                >
+                    <Text style={styles.buttonText}> Voir moins </Text>
+                </TouchableHighlight>;
+        }
+
+        // Rendu
         return (
             <View style={styles.container}>
+                {buttonLess}
                 <FlatList
-                    data={touits_datas.slice().reverse().slice(start, start + end)}
+                    data={touits_datas.slice().reverse().slice(offset, offset + INTERVAL)}
                     keyExtractor={
                         (item, index) => index.toString()
                     }
@@ -75,7 +96,7 @@ class TouitContainer extends React.Component {
                 />
                 <TouchableHighlight
                     style={styles.button}
-                    onPress={this.loadMore}
+                    onPress={() => this.pagination(10)}
                 >
                     <Text style={styles.buttonText}> Voir plus </Text>
                 </TouchableHighlight>

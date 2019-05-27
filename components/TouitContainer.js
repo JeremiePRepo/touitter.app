@@ -13,7 +13,7 @@ Imports
 import React from 'react';
 import Touit from './Touit';
 import TouitApi from '../api/TouitApi';
-import { StyleSheet, View, FlatList, TouchableHighlight, Text } from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 
 /*\
 Class
@@ -24,8 +24,8 @@ class TouitContainer extends React.Component {
     /**
      * Constructeur, n'est appelé qu'une fois au tout début
      */
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             touits_datas: [],
             start: 0,
@@ -51,25 +51,25 @@ class TouitContainer extends React.Component {
                 touits_datas: [...this.state.touits_datas, ...response.messages]
             });
         })
-    }
+    };
 
     loadMore = () => {
         this.setState({
             end: this.state.end + 10,
         })
-    }
+    };
 
     render() {
-        const { touits_datas, start, end } = this.state;
+        const {touits_datas, start, end} = this.state;
         return (
             <View style={styles.container}>
-                <FlatList inverted
+                <FlatList
                     data={touits_datas.slice().reverse().slice(start, start + end)}
                     keyExtractor={
                         (item, index) => index.toString()
                     }
                     renderItem={
-                        ({ item }) => <Touit message={item.message} name={item.name} />
+                        ({item}) => <Touit message={item.message} name={item.name}/>
                         // {...item} revient à faire titre={item.titre} description={item.description}
                     }
                 />
@@ -95,11 +95,19 @@ Styles
 ------------------------------------------------------------------------------
 \*/
 const styles = StyleSheet.create({
-    container: {
-    },
+    container: {},
     button: {
+        backgroundColor: '#AF7AC5',
+        padding: 10,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        borderRadius: 25,
     },
     buttonText: {
-        color: "red",
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white',
     },
-})
+});
